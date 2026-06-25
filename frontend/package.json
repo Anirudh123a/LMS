@@ -1,0 +1,33 @@
+{
+  "name": "lms-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.4.0",
+    "@mui/icons-material": "^9.1.1",
+    "@mui/material": "^9.1.1",
+    "axios": "^1.18.0",
+    "d3-scale": "^4.0.2",
+    "date-fns": "^4.4.0",
+    "framer-motion": "^12.40.0",
+    "html2pdf.js": "^0.14.0",
+    "react-hook-form": "^7.80.0",
+    "react-router-dom": "^7.18.0",
+    "react-toastify": "^11.1.0",
+    "recharts": "^3.8.1",
+    "xlsx": "^0.18.5",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.1.0"
+  }
+}
