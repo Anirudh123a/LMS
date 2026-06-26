@@ -32,7 +32,7 @@ export default function Register() {
     const passwordValue = watch('password', '');
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/api/auth/colleges`)
+axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/colleges`)
             .then(res => setCollegeOptions(res.data.colleges || []))
             .catch(() => setCollegeOptions([]));
     }, []);
