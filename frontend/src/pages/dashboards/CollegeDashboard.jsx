@@ -26,7 +26,7 @@ export default function CollegeDashboard() {
         setLoading(true);
         try {
             const res = await axios.get(
-                `${import.meta.env.VITE_API_URL}/api/college/mentors`,
+                `${import.meta.env.VITE_API_BASE_URL}/api/college/mentors`,
                 authHeader()
             );
             setMentors(res.data.mentors || []);
@@ -49,7 +49,7 @@ export default function CollegeDashboard() {
         setSubmitting(true);
         try {
             await axios.post(
-                `${import.meta.env.VITE_API_URL}/api/college/create-mentor`,
+                `${import.meta.env.VITE_API_BASE_URL}/api/college/create-mentor`,
                 form,
                 authHeader()
             );

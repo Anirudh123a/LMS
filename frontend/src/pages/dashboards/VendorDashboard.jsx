@@ -20,7 +20,7 @@ export default function VendorDashboard() {
     const fetchColleges = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/vendor/colleges`);
+            const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/vendor/colleges`);
             setColleges(res.data.colleges || []);
         } catch (err) {
             toast.error(err.response?.data?.message || 'Failed to load colleges.');
@@ -40,7 +40,7 @@ export default function VendorDashboard() {
         }
         setSubmitting(true);
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/vendor/create-college`, form);
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/vendor/create-college`, form);
             toast.success('College created successfully.');
             setOpen(false);
             setForm(emptyForm);

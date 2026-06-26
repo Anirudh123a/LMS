@@ -20,7 +20,7 @@ export default function ForgotPassword() {
     const onRequestCode = async (data) => {
         setSubmitting(true);
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/forgot-password`, { email: data.email });
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/forgot-password`, { email: data.email });
             setEmail(data.email);
             toast.success('If an account exists for this email, a reset code has been sent.');
             setStep(2);
@@ -38,7 +38,7 @@ export default function ForgotPassword() {
         }
         setSubmitting(true);
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/reset-password`, {
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/reset-password`, {
                 email,
                 otp: data.otp,
                 newPassword: data.newPassword

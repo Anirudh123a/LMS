@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             
-            axios.get(`${import.meta.env.VITE_API_URL}/api/auth/me`)
+            axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me`)
                 .then(res => {
                     setUser(res.data.user);
                 })

@@ -72,7 +72,7 @@ export default function CreateAdminModal({ onClose, onCreated, onNavigate, initi
     setSubmitting(true);
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/superadmin/create-admin`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/superadmin/create-admin`,
         { firstName: firstName.trim(), lastName: lastName.trim(), email: email.trim(), password: pwd, role, org: selectedOrg, permissions: perms }
       );
 

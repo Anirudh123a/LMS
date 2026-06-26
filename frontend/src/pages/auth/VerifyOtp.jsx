@@ -12,7 +12,7 @@ export default function VerifyOtp() {
 
     const onSubmit = async (data) => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/verify-otp`, { 
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/verify-otp`, { 
                 email: targetEmailAddress, 
                 otp: data.otp, 
                 purpose: 'REGISTER' 

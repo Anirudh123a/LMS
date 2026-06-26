@@ -54,7 +54,7 @@ axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/auth/colleges`)
 
     const onSubmit = async (data) => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, data);
+            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, data);
             toast.success('Registration initiated! Verification code sent.');
             navigate('/auth/verify-otp', { state: { email: data.email } });
         } catch (err) {

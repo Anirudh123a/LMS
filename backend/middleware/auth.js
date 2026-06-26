@@ -15,7 +15,7 @@ const verifyToken = async (req, res, next) => {
 
     try {
         // Aligned with the secret key string definition utilized within your AuthController login sequence
-        const jwtSecret = process.env.JWT_SECRET || 'fallback_secret_key';
+const jwtSecret = process.env.JWT_ACCESS_SECRET || 'fallback_secret_key';
         const decoded = jwt.verify(token, jwtSecret);
         
         // Query the database to ensure the user is still valid and active

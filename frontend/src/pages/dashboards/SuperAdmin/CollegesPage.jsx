@@ -18,7 +18,7 @@ function CreateCollegeModal({ onClose, onCreated }) {
     }
     setLoading(true);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/superadmin/create-college`, form);
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/superadmin/create-college`, form);
       toast.success("College created successfully!");
       onCreated();
       onClose();
@@ -78,7 +78,7 @@ export default function CollegesPage() {
   const fetchColleges = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/superadmin/colleges`);
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/superadmin/colleges`);
       setColleges(res.data.colleges || []);
     } catch {
       toast.error("Failed to load colleges.");

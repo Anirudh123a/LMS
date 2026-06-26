@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 const { sendMail } = require('../services/emailService');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key';
+const JWT_SECRET = process.env.JWT_ACCESS_SECRET || 'fallback_secret_key';
 const JWT_EXPIRES = '24h';
 
 const generateNumericOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
@@ -39,20 +39,20 @@ exports.registerStudent = async (req, res) => {
     const { rollNo, studentName, email, mobile, password, college, course, year, semester } = req.body;
     
     try {
-        const cleanEmail = email.trim().toLowerCase();
-        const [existing] = await db.execute('SELECT id FROM users WHERE email = ?', [cleanEmail]);
-        if (existing.length) {
-            return res.status(400).json({ message: 'This email address is already registered.' });
-        }
+      const cleanEmail = email.trim().toLowerCase();
+const [existing] = await db.execute('SELECT id FROM users WHERE email = ?', [cleanEmail]);
+if (existing.length) {
+    return res.status(400).json({ message: 'This email address is already registered.' });
+}
 
-        const hashedPassword = await bcrypt.hash(password, 12);
-        
-        const [userResult] = await db.execute(
-            'INSERT INTO users (email, password, role, is_verified, status) VALUES (?, ?, "STUDENT", 0, "PENDING")',
-            [cleanEmail, hashedPassword]
-        );
-        const userId = userResult.insertId;
+const hashedPassword = await bcrypt.hash(password, 12);
+const username = cleanEmail.split('@')[0]; // or use rollNo if you prefer
 
+const [userResult] = await db.execute(
+    'INSERT INTO users (username, email, password, role, is_verified, status) VALUES (?, ?, ?, "STUDENT", 0, "PENDING")',
+    [username, cleanEmail, hashedPassword]
+);
+const userId = userResult.insertId;
         const mappedCollegeId = isNaN(college) ? 1 : parseInt(college);
         const mappedYearId = isNaN(year) ? 1 : parseInt(year);
         const mappedSemesterId = isNaN(semester) ? 1 : parseInt(semester);
