@@ -148,25 +148,27 @@ export default function Login() {
 
                         <Box>
                             <Typography variant="body2" fontWeight="600" sx={{ mb: 0.8, color: 'text.secondary', fontSize: '0.85rem' }}>Password</Typography>
-                            <TextField 
-                                placeholder="Enter your password"
-                                type={showPassword ? 'text' : 'password'} 
-                                {...register('password')} 
-                                error={!!errors.password} 
-                                helperText={errors.password?.message} 
-                                fullWidth 
-                                size="small"
-                                sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' }}}
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                                                {showPassword ? <VisibilityOff sx={{ fontSize: 20 }} /> : <Visibility sx={{ fontSize: 20 }} />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    )
-                                }}
-                            />
+                         <TextField 
+    placeholder="Enter your password"
+    type={showPassword ? 'text' : 'password'} 
+    {...register('password')} 
+    error={!!errors.password} 
+    helperText={errors.password?.message} 
+    fullWidth 
+    size="small"
+    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' }}}
+    slotProps={{
+        input: {
+            endAdornment: (
+                <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                        {showPassword ? <VisibilityOff sx={{ fontSize: 20 }} /> : <Visibility sx={{ fontSize: 20 }} />}
+                    </IconButton>
+                </InputAdornment>
+            )
+        }
+    }}
+/>
                         </Box>
 
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: -1 }}>
